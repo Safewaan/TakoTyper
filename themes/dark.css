@@ -1,0 +1,22 @@
+:root {
+    --white: #fafafa;
+    --black: #1a1a1a;
+    --dark-grey: #333333;
+}
+
+body {
+    background: var(--black);
+}
+
+#header {
+    color: var(--white);
+}
+
+#left-area, #right-area {
+    color: var(--white);
+}
+
+#typing-area {
+    color: var(--dark-grey);
+    color: var(--white);
+}
