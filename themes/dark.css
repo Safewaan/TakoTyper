@@ -21,3 +21,11 @@ body {
     background: var(--dark-grey);
     color: var(--off-white);
 }
+
+.correct {
+    color: #68b723;
+}
+
+.incorrect {
+    color: #c6262e;
+}
