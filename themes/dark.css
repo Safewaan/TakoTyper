@@ -1,5 +1,5 @@
 :root {
-    --white: #fafafa;
+    --off-white: #fafafa;
     --black: #1a1a1a;
     --dark-grey: #333333;
 }
@@ -9,14 +9,15 @@ body {
 }
 
 #header {
-    color: var(--white);
+    background: var(--dark-grey);
+    color: var(--off-white);
 }
 
 #left-area, #right-area {
-    color: var(--white);
+    color: var(--off-white);
 }
 
 #typing-area {
-    color: var(--dark-grey);
-    color: var(--white);
+    background: var(--dark-grey);
+    color: var(--off-white);
 }
