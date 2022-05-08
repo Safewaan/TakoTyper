@@ -102,6 +102,9 @@ body {
   overflow: hidden;
 }
 
+#results {
+  margin-top: 16px;
+}
 
 #input-field {
   width: 100%;

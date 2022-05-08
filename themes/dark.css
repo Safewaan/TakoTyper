@@ -13,7 +13,7 @@ body {
     color: var(--off-white);
 }
 
-#left-area, #right-area {
+#left-area, #right-area, #results {
     color: var(--off-white);
 }
 

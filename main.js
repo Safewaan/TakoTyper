@@ -1,6 +1,7 @@
 // HTML Elements
 const textDisplay = document.querySelector('#text-display');
 const inputField = document.querySelector('#input-field');
+const results = document.querySelector('#results');
 
 // Count variables
 let wordCount;
@@ -11,8 +12,8 @@ var randomWords = [];
 
 // Variables for speed test
 let currentWord = 0; 
+let correctWords = 0;
 let correctChars = 0;
-let incorrectChars = 0;
 let totalChars = 0;
 let startTime = 0;
 
@@ -48,6 +49,18 @@ function showText() {
     inputField.focus();
 }
 
+function showResults() {
+    let timeTakenMin, accuracy, wpm;
+    timeTakenMin = (Date.now() - startTime) / 1000 / 60;
+    accuracy = Math.floor((correctChars / totalChars) * 100);
+    wpm = Math.floor(correctWords / timeTakenMin);
+
+
+    let span = document.createElement('span');
+    span.innerHTML = `Words/Minute: ${wpm} | Accuracy: ${accuracy}`;
+    results.appendChild(span);
+}
+
 inputField.addEventListener('keydown', e => {
     if (currentWord < randomWords.length) {
         inputFieldClass();
@@ -73,23 +86,25 @@ inputField.addEventListener('keydown', e => {
             e.preventDefault();
 
             // Increment currentWord if it is not the last word
-            if (currentWord < randomWords.length -1) {
+            if (currentWord < randomWords.length) {
 
                 // The word is correct
                 if (inputField.value === randomWords[currentWord]) {
                     textDisplay.childNodes[currentWord].classList.add('correct');
                     correctChars += randomWords[currentWord].length + 1;
                     totalChars += randomWords[currentWord].length + 1;
+                    correctWords++;
                 }
                 // The word is incorrect
                 else {
                     textDisplay.childNodes[currentWord].classList.add('incorrect');
-                    incorrectChars += randomWords[currentWord].length + 1;
                     totalChars += randomWords[currentWord].length + 1;
                 }
-                // Highlight next word
-                textDisplay.childNodes[currentWord + 1].classList.add('highlight');
+            }
 
+            // Show results after the last word is inputted
+            if (currentWord === randomWords.length - 1) {  
+                showResults();
             }
 
             inputField.value = '';
