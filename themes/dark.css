@@ -1,31 +1,38 @@
 :root {
-    --off-white: #fafafa;
-    --black: #1a1a1a;
-    --dark-grey: #333333;
+  --white: #fff;
+  --off-white: #fafafa;
+  --black: #0d0d0d;
+  --dark-grey: #1a1a1a;
 }
 
 body {
-    background: var(--black);
+  background: var(--black);
 }
 
 #header {
-    background: var(--dark-grey);
-    color: var(--off-white);
+  background: var(--dark-grey);
+  color: var(--white);
 }
 
-#left-area, #right-area, #results {
-    color: var(--off-white);
+#left-area,
+#right-area,
+#results {
+  color: var(--white);
 }
 
 #typing-area {
-    background: var(--dark-grey);
-    color: var(--off-white);
+  background: var(--dark-grey);
+  color: var(--white);
 }
 
 .correct {
-    color: #68b723;
+  color: #06d6a0;
 }
 
 .incorrect {
-    color: #c6262e;
+  color: #ef476f;
+}
+
+.divider-inline-v {
+  color: rgba(255, 255, 255, 0.2);
 }
