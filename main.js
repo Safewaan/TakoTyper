@@ -17,11 +17,22 @@ let correctChars = 0;
 let totalChars = 0;
 let startTime = 0;
 
+function resetState() {
+    currentWord = 0;
+    correctWords = 0;
+    correctChars = 0;
+    totalChars = 0
+    startTime = 0;
+    results.innerHTML = "Words/Minute: | Accuracy: ";
+}
+
 function init() {
     setWordCount(10);
 }
 
 function setWordCount(count) {
+    resetState();
+
     wordCount = count;
     document.querySelectorAll('#word-count > span').forEach(e => (e.style.borderBottom = ''));
     document.querySelector(`#wc-${wordCount}`).style.borderBottom = '2px solid';
@@ -32,6 +43,8 @@ function showText() {
     textDisplay.style.height = 'auto';
     textDisplay.innerHTML = '';
     
+    resetState();
+
     // Reset list
     randomWords = [];
 
@@ -54,13 +67,10 @@ function showResults() {
     timeTakenMin = (Date.now() - startTime) / 1000 / 60;
     accuracy = Math.floor((correctChars / totalChars) * 100);
     wpm = Math.floor(correctWords / timeTakenMin);
-
-
-    let span = document.createElement('span');
-    span.innerHTML = `Words/Minute: ${wpm} | Accuracy: ${accuracy}`;
-    results.appendChild(span);
+    results.innerHTML = `Words/Minute: ${wpm} | Accuracy: ${accuracy}`;
 }
 
+// Key input event
 inputField.addEventListener('keydown', e => {
     if (currentWord < randomWords.length) {
         inputFieldClass();

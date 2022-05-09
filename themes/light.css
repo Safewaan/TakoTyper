@@ -1,0 +1,32 @@
+:root {
+    --light-grey: #eaeaea;
+    --off-white: #fafafa;
+    --black: #1a1a1a;
+    --dark-grey: #333333;
+}
+
+body {
+    background: var(--off-white);
+}
+
+#header {
+    background: var(--light-grey);
+    color: var(--black);
+}
+
+#left-area, #right-area, #results {
+    color: var(--black);
+}
+
+#typing-area {
+    background: var(--light-grey);
+    color: var(--black);
+}
+
+.correct {
+    color: #68b723;
+}
+
+.incorrect {
+    color: #c6262e;
+}
