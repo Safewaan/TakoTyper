@@ -9,14 +9,17 @@ body {
   background: var(--off-white);
 }
 
-#header {
+#header,
+#theme-menu {
   background: var(--light-grey);
   color: var(--black);
 }
 
 #left-area,
 #right-area,
-#results {
+#results,
+#show-main-area,
+#show-theme-area {
   color: var(--black);
 }
 

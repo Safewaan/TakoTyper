@@ -16,7 +16,7 @@ var allWords = ["here", "are", "some", "test", "words", "to", "use", "for", "tes
 var randomWords = [];
 
 // Variables for speed test
-let currentWord = 0; 
+let currentWord = 0;
 let correctWords = 0;
 let correctChars = 0;
 let totalChars = 0;
@@ -33,8 +33,11 @@ function resetState() {
 
 function init() {
     setWordCount(10);
+    showAllThemes()
 }
 
+
+// set functions
 function setWordCount(count) {
     resetState();
 
@@ -44,16 +47,33 @@ function setWordCount(count) {
     showText();
 }
 
+function setTheme(_theme) {
+    let theme = _theme.toLowerCase();
+    fetch(`themes/${theme}.css`).then(response => {
+        if (response.status === 200) {
+            response.text().then(css => {
+                document.querySelector("#theme").setAttribute('href', `themes/${theme}.css`);
+            })
+                .catch(error => console.error(error));
+        }
+        else {
+            console.log(`The theme ${theme} was not found.`);
+        }
+    })
+        .catch(error => console.error(error));
+}
+
+// show functions
 function showText() {
     textDisplay.style.height = 'auto';
     textDisplay.innerHTML = '';
-    
+
     resetState();
 
     // Reset list
     randomWords = [];
 
-    while(randomWords.length < wordCount) {
+    while (randomWords.length < wordCount) {
         let randInt = Math.floor(Math.random() * allWords.length);
         const randomWord = allWords[randInt];
         randomWords.push(randomWord);
@@ -61,7 +81,7 @@ function showText() {
         let span = document.createElement('span');
         span.innerHTML = randomWord + ' ';
         textDisplay.appendChild(span);
-    } 
+    }
 
     textDisplay.firstChild.classList.add('highlight');
     inputField.focus();
@@ -85,6 +105,35 @@ function showMainArea() {
     themeArea.style.display = "none";
 }
 
+function showAllThemes() {
+    fetch(`themes/theme-data.json`).then(response => {
+        if (response.status === 200) {
+            response.text().then(body => {
+                let themes = JSON.parse(body);
+                let keys = Object.keys(themes);
+
+                for (var i = 0; i < keys.length; i++) {
+                    if (keys[i] != "colors") {
+                        let theme = document.createElement('div');
+                        theme.setAttribute('class', 'theme-button');
+                        theme.setAttribute('onClick', `setTheme('${keys[i]}')`)
+                        theme.setAttribute('id', keys[i]);
+                        theme.textContent = keys[i];
+                        theme.style.background = themes[keys[i]]['background'];
+                        theme.style.color = themes[keys[i]]['color'];
+                        document.getElementById('theme-menu').appendChild(theme);
+                    }
+                }
+            })
+                .catch(error => console.error(error));
+        }
+        else {
+            console.log("Cannot find theme data.");
+        }
+    })
+        .catch(error => console.error(error));
+}
+
 // Key input event
 inputField.addEventListener('keydown', e => {
     if (currentWord < randomWords.length) {
@@ -97,13 +146,13 @@ inputField.addEventListener('keydown', e => {
             let userInput = inputField.value + e.key;
             let correctInput = randomWords[currentWord].slice(0, userInput.length);
             inputField.className = userInput === correctInput ? '' : 'incorrect';
-        } 
+        }
         // User deletes a character
         else if (e.key === 'Backspace') {
             let userInput = inputField.value.slice(0, inputField.value.length - 1);
             let correctInput = randomWords[currentWord].slice(0, userInput.length);
             inputField.className = userInput === correctInput ? '' : 'incorrect';
-        } 
+        }
         // User inputs a space (next word)
         else if (e.key === ' ') {
             inputField.className = ' ';
@@ -128,7 +177,7 @@ inputField.addEventListener('keydown', e => {
             }
 
             // Show results after the last word is inputted
-            if (currentWord === randomWords.length - 1) {  
+            if (currentWord === randomWords.length - 1) {
                 showResults();
             }
 

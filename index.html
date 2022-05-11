@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="style.css" />
     <link id="theme" rel="stylesheet" href="themes/light.css" />
 </head>
+
 <body>
     <h2 id="header"><span>🐙</span>TakoTyper</h2>
     <div id="main-area" class="">
@@ -26,25 +28,27 @@
                     <span id="wc-50" onclick="setWordCount(50)">50</span>
                 </span>
             </div>
-        <div id="right-area">
-            <span id="redo" onclick="showText()">reset</span>
+            <div id="right-area">
+                <span id="redo" onclick="showText()">reset</span>
+            </div>
         </div>
-    </div>
-    <div id="typing-area">
-        <div id="text-display"></div>
-        <div class="input-bar">
-            <input id="input-field" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" tabindex="1">
+        <div id="typing-area">
+            <div id="text-display"></div>
+            <div class="input-bar">
+                <input id="input-field" type="text" spellcheck="false" autocomplete="off" autocorrect="off"
+                    autocapitalize="off" tabindex="1">
+            </div>
         </div>
+        <div id="results">Words/Minute: | Accuracy: </div>
     </div>
-    <div id="results">Words/Minute: | Accuracy: </div> 
-</div>  
     <div id="theme-area" class="">
         <div id="show-main-area" class="button" onClick="showMainArea()">Back</div>
         <div id="theme-menu"></div>
     </div>
-<div id="footer">
-    <div id="show-theme-area" class="button" onClick="showThemeArea()">Themes</div>
-</div>
-<script src = "main.js"></script>  
+    <div id="footer">
+        <div id="show-theme-area" class="button" onClick="showThemeArea()">Themes</div>
+    </div>
+    <script src="main.js"></script>
 </body>
+
 </html>

@@ -2,10 +2,8 @@
 
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2')
-      format('woff2'),
-    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff')
-      format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -54,7 +52,7 @@ body {
   width: 720px;
 }
 
-#theme-menu{
+#theme-menu {
   margin-top: 1rem;
   padding: 1.4rem 1rem;
   border-radius: 0.4rem;
@@ -64,7 +62,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-#theme-area{
+#theme-area {
   margin: 0 0.4rem;
   width: 100%;
   max-width: 40rem;
@@ -74,7 +72,7 @@ body {
   transform: translateY(-2vh);
 }
 
-.theme-button{
+.theme-button {
   padding: 1rem 0;
   background: gray;
   border-radius: 0.4rem;
@@ -82,7 +80,7 @@ body {
   font-size: .8rem;
 }
 
-.theme-button:hover{
+.theme-button:hover {
   cursor: pointer;
   box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
 }
@@ -113,42 +111,3 @@ body {
   border-radius: 8px;
   font-size: 16px;
 }
-
-/* #redo-button {
-  margin-left: 0.7rem;
-  border: none;
-  font: inherit;
-  padding: 0.4rem 1rem;
-  border-radius: 0.2rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-} */
-
-/* #footer {
-  margin-bottom: 1.2rem;
-  display: flex;
-}
-
-#footer *{
-  text-decoration: none;
-  margin: 0 .5rem;
-  color: inherit;
-}
-
-#footer .button{
-  cursor: pointer;
-}
-
-#footer a:visited{
-  color: unset;
-}
-
-.hidden{ 
-  display: none !important;
-}
-
-body, #header, #left-wing, #right-wing, #typing-area, #theme-area, #theme-center,
-#text-display, #redo-button, #footer, #highlight {
-  transition: all .4s ease-in-out 0s;
-
-} */
