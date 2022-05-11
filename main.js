@@ -113,16 +113,14 @@ function showAllThemes() {
                 let keys = Object.keys(themes);
 
                 for (var i = 0; i < keys.length; i++) {
-                    if (keys[i] != "colors") {
-                        let theme = document.createElement('div');
-                        theme.setAttribute('class', 'theme-button');
-                        theme.setAttribute('onClick', `setTheme('${keys[i]}')`)
-                        theme.setAttribute('id', keys[i]);
-                        theme.textContent = keys[i];
-                        theme.style.background = themes[keys[i]]['background'];
-                        theme.style.color = themes[keys[i]]['color'];
-                        document.getElementById('theme-menu').appendChild(theme);
-                    }
+                    let theme = document.createElement('div');
+                    theme.setAttribute('class', 'theme-button');
+                    theme.setAttribute('onClick', `setTheme('${keys[i]}')`)
+                    theme.setAttribute('id', keys[i]);
+                    theme.textContent = keys[i];
+                    theme.style.background = themes[keys[i]]['background'];
+                    theme.style.color = themes[keys[i]]['color'];
+                    document.getElementById('theme-menu').appendChild(theme);
                 }
             })
                 .catch(error => console.error(error));
