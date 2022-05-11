@@ -2,6 +2,11 @@
 const textDisplay = document.querySelector('#text-display');
 const inputField = document.querySelector('#input-field');
 const results = document.querySelector('#results');
+const mainArea = document.querySelector("#main-area");
+const themeArea = document.querySelector('#theme-area');
+
+// Hide the theme area
+themeArea.style.display = "none";
 
 // Count variables
 let wordCount;
@@ -68,6 +73,16 @@ function showResults() {
     accuracy = Math.floor((correctChars / totalChars) * 100);
     wpm = Math.floor(correctWords / timeTakenMin);
     results.innerHTML = `Words/Minute: ${wpm} | Accuracy: ${accuracy}`;
+}
+
+function showThemeArea() {
+    mainArea.style.display = "none";
+    themeArea.style.display = "block";
+}
+
+function showMainArea() {
+    mainArea.style.display = "block";
+    themeArea.style.display = "none";
 }
 
 // Key input event
