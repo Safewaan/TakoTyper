@@ -12,7 +12,7 @@ themeArea.style.display = "none";
 let wordCount;
 let timeCount;
 
-var allWords = ["here", "are", "some", "test", "words", "to", "use", "for", "testing", "alternatively", "complex", "expressions", "may", "reside", "in", "this", "spectacular", "subset", "of", "the", "english", "dictionary"];
+var allWords = [];
 var randomWords = [];
 
 // Variables for speed test
@@ -22,28 +22,31 @@ let correctChars = 0;
 let totalChars = 0;
 let startTime = 0;
 
-function resetState() {
+function initTestState() {
     currentWord = 0;
     correctWords = 0;
     correctChars = 0;
     totalChars = 0
     startTime = 0;
+    randomWords = [];
+    textDisplay.style.height = 'auto';
+    textDisplay.innerHTML = '';
     results.innerHTML = "Words/Minute: | Accuracy: ";
 }
 
-function init() {
-    setWordCount(10);
-    showAllThemes()
-}
-
-
 // set functions
 function setWordCount(count) {
-    resetState();
-
     wordCount = count;
-    document.querySelectorAll('#word-count > span').forEach(e => (e.style.borderBottom = ''));
-    document.querySelector(`#wc-${wordCount}`).style.borderBottom = '2px solid';
+    setText();
+}
+
+function setText() {
+    initTestState();
+    while (randomWords.length < wordCount) {
+        let randomInt = Math.floor(Math.random() * allWords.length);
+        let randomWord = allWords[randomInt];
+        randomWords.push(randomWord);
+    }
     showText();
 }
 
@@ -63,28 +66,29 @@ function setTheme(_theme) {
         .catch(error => console.error(error));
 }
 
+function setLanguage(_language) {
+    let language = _language.toLowerCase();
+    fetch(`languages/${language}.json`).then(response => {
+        if (response.status === 200) {
+            response.json().then(json => {
+                allWords = json[language];
+            })
+            .catch(error => console.error(error));
+        }
+        else {
+            console.log(`The language ${language} was not found.`);
+        }
+    })
+    .catch(error => console.error(error));
+}
+
 // show functions
 function showText() {
-    textDisplay.style.height = 'auto';
-    textDisplay.innerHTML = '';
-
-    resetState();
-
-    // Reset list
-    randomWords = [];
-
-    while (randomWords.length < wordCount) {
-        let randInt = Math.floor(Math.random() * allWords.length);
-        const randomWord = allWords[randInt];
-        randomWords.push(randomWord);
-
-        let span = document.createElement('span');
-        span.innerHTML = randomWord + ' ';
+    randomWords.forEach(word => {
+        let span = document.createElement("span");
+        span.innerHTML = word + " ";
         textDisplay.appendChild(span);
-    }
-
-    textDisplay.firstChild.classList.add('highlight');
-    inputField.focus();
+    })
 }
 
 function showResults() {
@@ -190,4 +194,4 @@ inputField.addEventListener('keydown', e => {
     }
 })
 
-init();
+setLanguage("english");
