@@ -195,3 +195,4 @@ inputField.addEventListener('keydown', e => {
 })
 
 setLanguage("english");
+setWordCount(10);
